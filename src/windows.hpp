@@ -8,8 +8,8 @@
 
 namespace windows
 {
-	//ウィンドウの制裁
-	//失敗したらnullptrが返ってくる
+	//ウィンドウの作製
+	//失敗したらnulloptが返ってくる
 	std::optional<HWND> create_window(std::string&& windowName, float windowWidth, float windowHeight);
 
 	//OpenGLの初期化
