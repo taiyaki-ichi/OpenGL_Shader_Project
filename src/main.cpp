@@ -16,6 +16,8 @@ int main()
 		return 0;
 	}
 
+	while (windows::process_message()) {};
+
 	windows::shutdown(hwnd.value(), pair.value().first, pair.value().second);
 
 	return 0;

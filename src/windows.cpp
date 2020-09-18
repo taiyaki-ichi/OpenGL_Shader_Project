@@ -2,7 +2,7 @@
 
 namespace windows
 {
-    //イベント処理の前方宣言
+    //メッセージ処理の前方宣言
     //最低限の機能しかない
     LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
@@ -66,22 +66,15 @@ namespace windows
         return hwnd;
 	}
 
-    //ウィンドウの破壊メッセを処理、最低限のウィンドウの機能のみここで実装
     LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     {
-        switch (msg) {
-        case WM_DESTROY:
+        if (msg == WM_DESTROY || msg == WM_CLOSE) { 
             PostQuitMessage(0);
-            break;
-
-        default:
-            return DefWindowProc(hWnd, msg, wParam, lParam);
-            break;
-
+            return 0; 
         }
-        return 0;
-    }
 
+        return DefWindowProc(hWnd, msg, wParam, lParam);
+    }
 
 
     std::optional<std::pair<HDC, HGLRC>> init_opengl(HWND hwnd)
@@ -128,6 +121,26 @@ namespace windows
         return std::make_pair(dc, glRC);
     }
 
+
+    bool process_message()
+    {
+        MSG msg;
+        //メッセージかある場合１つ処理
+        if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+        {
+            //メッセージがアプリケーション終了のとき
+            if (msg.message == WM_QUIT)
+                return false;
+            else {
+                //WndProcへメッセージを送る
+                DispatchMessage(&msg);
+                return true;
+            }
+        }
+        //メッセージがない場合
+        else
+            return true;
+    }
 
     void shutdown(HWND hwnd, HDC hdc, HGLRC hglrc)
     {

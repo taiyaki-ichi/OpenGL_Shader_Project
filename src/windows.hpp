@@ -16,6 +16,11 @@ namespace windows
 	//HWNDを要求
 	std::optional<std::pair<HDC, HGLRC>> init_opengl(HWND hwnd);
 
+	//メッセージが存在する場合、1つ処理する
+	//アプリケーションの終了すなわちウィンドウが破壊されたときfalse
+	//それ以外はtrue
+	bool process_message();
+
 	//終了処理
 	void shutdown(HWND, HDC, HGLRC);
 
