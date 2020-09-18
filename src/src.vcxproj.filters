@@ -2,9 +2,9 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="window.cpp" />
+    <ClCompile Include="windows.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="window.hpp" />
+    <ClInclude Include="windows.hpp" />
   </ItemGroup>
 </Project>
