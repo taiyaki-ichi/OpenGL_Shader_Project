@@ -1,8 +1,7 @@
 #pragma once
-
-#pragma comment(lib, "OpenGL32.lib")
-
 #include<Windows.h>
+#include<glew.h>
+
 #include<string>
 #include<optional>
 
@@ -23,5 +22,7 @@ namespace windows
 
 	//I—¹ˆ—
 	void shutdown(HWND, HDC, HGLRC);
+
+
 
 }

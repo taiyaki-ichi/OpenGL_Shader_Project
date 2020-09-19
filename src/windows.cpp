@@ -1,4 +1,5 @@
 #include"windows.hpp"
+#pragma comment(lib, "OpenGL32.lib")
 
 namespace windows
 {
@@ -6,8 +7,8 @@ namespace windows
     //最低限の機能しかない
     LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
-	std::optional<HWND> create_window(std::string&& windowName, float windowWidth, float windowHeight)
-	{
+    std::optional<HWND> create_window(std::string&& windowName, float windowWidth, float windowHeight)
+    {
         //ハンドルの獲得
         HWND hwnd;
         HINSTANCE hInstance = GetModuleHandle(NULL);
@@ -64,13 +65,13 @@ namespace windows
         UpdateWindow(hwnd);
 
         return hwnd;
-	}
+    }
 
     LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     {
-        if (msg == WM_DESTROY || msg == WM_CLOSE) { 
+        if (msg == WM_DESTROY || msg == WM_CLOSE) {
             PostQuitMessage(0);
-            return 0; 
+            return 0;
         }
 
         return DefWindowProc(hWnd, msg, wParam, lParam);
@@ -105,7 +106,7 @@ namespace windows
         int format = ChoosePixelFormat(dc, &pfd);
         // 該当するピクセルフォーマットが無い場合
         if (format == 0)
-            return std::nullopt; 
+            return std::nullopt;
 
         // OpenGLが使うデバイスコンテキストに指定のピクセルフォーマットをセット
         if (!SetPixelFormat(dc, format, &pfd))
