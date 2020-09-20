@@ -72,12 +72,12 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Program Files\glew-2.2.0\include\GL;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Program Files\glew-2.2.0\include\GL;C:\Program Files\glm-0.9.9.8\glm;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Program Files\glew-2.2.0\lib\Release\Win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Program Files\glew-2.2.0\include\GL;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Program Files\glew-2.2.0\include\GL;C:\Program Files\glm-0.9.9.8\glm;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Program Files\glew-2.2.0\lib\Release\Win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClInclude Include="shader.hpp" />
     <ClInclude Include="Utility\file.hpp" />
+    <ClInclude Include="vertex_array.hpp" />
     <ClInclude Include="windows.hpp" />
   </ItemGroup>
   <ItemGroup>

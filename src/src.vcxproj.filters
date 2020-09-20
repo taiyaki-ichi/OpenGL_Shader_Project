@@ -4,6 +4,7 @@
     <ClInclude Include="windows.hpp" />
     <ClInclude Include="Utility\file.hpp" />
     <ClInclude Include="shader.hpp" />
+    <ClInclude Include="vertex_array.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="windows.cpp" />
