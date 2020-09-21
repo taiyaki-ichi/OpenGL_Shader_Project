@@ -1,5 +1,6 @@
 #include"func.hpp"
 #pragma comment(lib, "OpenGL32.lib")
+#pragma comment(lib, "winmm.lib")
 
 namespace graphic
 {
@@ -155,5 +156,19 @@ namespace graphic
 
         //デバイスコンテキストを開放
         ReleaseDC(hwnd, hdc);
+    }
+
+    void sleep(unsigned long preTime, unsigned long waitTime)
+    {
+        while (timeGetTime() < preTime + waitTime)
+        {
+            timeBeginPeriod(1);
+            Sleep(1);
+            timeEndPeriod(1);
+        }
+    }
+
+    unsigned int get_time() {
+        return timeGetTime();
     }
 }

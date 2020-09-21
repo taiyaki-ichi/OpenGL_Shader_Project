@@ -13,10 +13,11 @@
 
 #include"app.hpp"
 
+
 int main()
 {
 
-	auto app = graphic::app::create("aa", 800.f, 600.f);
+	auto app = graphic::app::create("aa", 800.f, 600.f, 60.f);
 
 	auto s = graphic::shader{ "ShaderFile/shader.vert" ,"ShaderFile/shader.frag" };
 
@@ -32,7 +33,6 @@ int main()
 	auto posLocation = s.get_attribute_location("pos");
 
 	auto vao = graphic::vertex_array{ std::move(vert),std::move(index),posLocation };
-
 
 	while (app->loop()) {
 
@@ -50,7 +50,6 @@ int main()
 		
 		
 		app->finish_drawing();
-
 	};
 
 	return 0;

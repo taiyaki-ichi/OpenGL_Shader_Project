@@ -4,15 +4,17 @@
 #include"app/handle.hpp"
 #include<Windows.h>
 #include<glew.h>
+#include"app/time_keeper.hpp"
 
 #pragma comment(lib, "OpenGL32.lib")
 #pragma comment(lib, "glew32.lib")
 
 namespace graphic
 {
-	app::app(const std::string& name, float w, float h)
+	app::app(const std::string& name, float w, float h,float fps)
 		:m_is_running{ false }
 		, m_handle{nullptr}
+		, m_time_keeper{nullptr}
 	{
 		auto hwnd = create_window(name, w, h);
 
@@ -37,14 +39,17 @@ namespace graphic
 				}
 			}
 		}
+
+		m_time_keeper = std::unique_ptr<time_keeper>{ new time_keeper{fps} };
 	}
 
-	std::unique_ptr<app> app::create(const std::string& name, float w, float h)
+	std::unique_ptr<app> app::create(const std::string& name, float w, float h,float fps)
 	{
-		return std::unique_ptr<app>{ new app{ name,w,h } };
+		return std::unique_ptr<app>{ new app{ name,w,h ,fps } };
 	}
 	bool app::loop()
 	{
+		m_time_keeper->adjust();
 		return process_message();
 	}
 	void app::begin_drawing()

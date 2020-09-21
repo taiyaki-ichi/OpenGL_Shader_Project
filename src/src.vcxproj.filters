@@ -7,6 +7,7 @@
     <ClInclude Include="app.hpp" />
     <ClInclude Include="app\func.hpp" />
     <ClInclude Include="app\handle.hpp" />
+    <ClInclude Include="app\time_keeper.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utility\file.cpp" />
@@ -14,6 +15,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="app.cpp" />
     <ClCompile Include="app\func.cpp" />
+    <ClCompile Include="app\time_keeper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ShaderFile\shader.frag" />

@@ -148,6 +148,7 @@
     <ClInclude Include="app.hpp" />
     <ClInclude Include="app\func.hpp" />
     <ClInclude Include="app\handle.hpp" />
+    <ClInclude Include="app\time_keeper.hpp" />
     <ClInclude Include="shader.hpp" />
     <ClInclude Include="Utility\file.hpp" />
     <ClInclude Include="vertex_array.hpp" />
@@ -155,6 +156,7 @@
   <ItemGroup>
     <ClCompile Include="app.cpp" />
     <ClCompile Include="app\func.cpp" />
+    <ClCompile Include="app\time_keeper.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="Utility\file.cpp" />

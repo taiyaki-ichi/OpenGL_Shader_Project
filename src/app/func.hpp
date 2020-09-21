@@ -24,5 +24,9 @@ namespace graphic
 	void shutdown(HWND, HDC, HGLRC);
 
 
+	//prevTime‚©‚çwaitTimeŽžŠÔSleep
+	void sleep(unsigned long preTime, unsigned long waitTime);
+	unsigned int get_time();
+
 
 }
