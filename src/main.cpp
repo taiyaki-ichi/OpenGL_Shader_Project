@@ -1,12 +1,7 @@
 #include<iostream>
 
 #include<Windows.h>
-#include<glew.h>
 
-#pragma comment(lib, "OpenGL32.lib")
-#pragma comment(lib, "glew32.lib")
-
-#include"windows.hpp"
 #include"shader.hpp"
 
 #include<glm.hpp>
@@ -16,39 +11,12 @@
 #include"vertex_array.hpp"
 #include"shader.hpp"
 
+#include"app.hpp"
+
 int main()
 {
 
-	auto hwnd = windows::create_window("aaa", 800.f, 600.f);
-
-	if (!hwnd) {
-		std::cout << "failed window_create";
-		return 0;
-	}
-
-	auto pair = windows::init_opengl(hwnd.value());
-	if (!pair) {
-		std::cout << "failed init_opengl";
-		return 0;
-	}
-
-	if (glewInit())
-	{
-		std::cout << "failed glewInit";
-		return 0;
-	}
-
-	/*
-	auto vertS = graphic::compile("ShaderFile/shader.vert", GL_VERTEX_SHADER);
-	auto fragS = graphic::compile("ShaderFile/shader.frag", GL_FRAGMENT_SHADER);
-
-	if (!vertS || !fragS) {
-		std::cout << "failed com";
-		return 0;
-	}
-
-	auto sha = graphic::create_shaderprogram(vertS.value(), fragS.value());
-	*/
+	auto app = graphic::app::create("aa", 800.f, 600.f);
 
 	auto s = graphic::shader{ "ShaderFile/shader.vert" ,"ShaderFile/shader.frag" };
 
@@ -66,13 +34,12 @@ int main()
 	auto vao = graphic::vertex_array{ std::move(vert),std::move(index),posLocation };
 
 
-	while (windows::process_message()) {
+	while (app->loop()) {
 
 		//•`ŽÊ—Ìˆæ‚ðŽw’è
-		wglMakeCurrent(pair.value().first, pair.value().second);
+		//wglMakeCurrent(pair.value().first, pair.value().second);
+		app->begin_drawing();
 
-		
-		//glUseProgram(sha.value());
 		s.use();
 
 		glClear(GL_COLOR_BUFFER_BIT);
@@ -81,18 +48,10 @@ int main()
 
 		vao.bind_and_draw(GL_TRIANGLES);
 		
-		glFlush();
-		SwapBuffers(pair.value().first);
-		wglMakeCurrent(NULL, NULL);
+		
+		app->finish_drawing();
 
 	};
-
-	windows::shutdown(hwnd.value(), pair.value().first, pair.value().second);
-
-	return 0;
-
-
-
 
 	return 0;
 

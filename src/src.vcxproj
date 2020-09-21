@@ -145,16 +145,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="app.hpp" />
+    <ClInclude Include="app\func.hpp" />
+    <ClInclude Include="app\handle.hpp" />
     <ClInclude Include="shader.hpp" />
     <ClInclude Include="Utility\file.hpp" />
     <ClInclude Include="vertex_array.hpp" />
-    <ClInclude Include="windows.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="app.cpp" />
+    <ClCompile Include="app\func.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="Utility\file.cpp" />
-    <ClCompile Include="windows.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ShaderFile\shader.frag" />

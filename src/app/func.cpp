@@ -1,13 +1,13 @@
-#include"windows.hpp"
+#include"func.hpp"
 #pragma comment(lib, "OpenGL32.lib")
 
-namespace windows
+namespace graphic
 {
     //メッセージ処理の前方宣言
     //最低限の機能しかない
     LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
-    std::optional<HWND> create_window(std::string&& windowName, float windowWidth, float windowHeight)
+    std::optional<HWND> create_window(const std::string& windowName, float windowWidth, float windowHeight)
     {
         //ハンドルの獲得
         HWND hwnd;
@@ -147,7 +147,7 @@ namespace windows
     {
 
         //カレントコンテキストを無効にする
-        wglMakeCurrent(NULL, NULL);
+       // wglMakeCurrent(NULL, NULL);
 
         //カレントコンテキストを削除
         //nullでも動いたのでチェックしない

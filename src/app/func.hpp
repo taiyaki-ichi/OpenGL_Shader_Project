@@ -5,11 +5,11 @@
 #include<string>
 #include<optional>
 
-namespace windows
+namespace graphic
 {
 	//ウィンドウの作製
 	//失敗したらnulloptが返ってくる
-	std::optional<HWND> create_window(std::string&& windowName, float windowWidth, float windowHeight);
+	std::optional<HWND> create_window(const std::string& windowName, float windowWidth, float windowHeight);
 
 	//OpenGLの初期化
 	//HWNDを要求
