@@ -27,11 +27,6 @@ namespace graphic
 		auto vertID = compile(vertShaderFileName, GL_VERTEX_SHADER);
 		auto fragID = compile(fragShaderFileName, GL_FRAGMENT_SHADER);
 
-		if (!vertID)
-			std::cout << "faild compile " << vertShaderFileName << "\n";
-		if (!fragID)
-			std::cout << "failed compile " << fragShaderFileName << "\n";
-
 		//コンパイルに成功したとき、シェーダプログラムを生成
 		if (vertID && fragID)
 		{
@@ -83,7 +78,11 @@ namespace graphic
 			GLint flag;
 			glGetShaderiv(shaderObj, GL_COMPILE_STATUS, &flag);
 			if (flag == GL_FALSE) {
-				std::cout << "failed shader compile (file name: " << fileName << " )\n";
+				std::cout << "faild compile " << fileName << "\n";
+				char log[512];
+				glGetShaderInfoLog(shaderObj, 512, NULL, log);
+				std::cout << "log: \n" << log << "\n";
+
 				return std::nullopt;
 			}
 
