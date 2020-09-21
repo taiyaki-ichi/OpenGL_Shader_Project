@@ -56,6 +56,11 @@ namespace graphic
 		return glGetAttribLocation(m_ID, name.c_str());
 	}
 
+	GLint shader::get_uniform_location(const std::string& name) 
+	{
+		return glGetUniformLocation(m_ID, name.c_str());
+	}
+
 
 	namespace {
 

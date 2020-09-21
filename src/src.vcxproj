@@ -162,6 +162,7 @@
     <ClCompile Include="Utility\file.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ShaderFile\cube_shader.vert" />
     <None Include="ShaderFile\shader.frag" />
     <None Include="ShaderFile\shader.vert" />
   </ItemGroup>

@@ -22,6 +22,7 @@ namespace graphic
 		void set(const std::string& name, T&& data);
 
 		GLint get_attribute_location(const std::string& name);
+		GLint get_uniform_location(const std::string& name);
 	};
 
 	template<typename T>

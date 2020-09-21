@@ -20,5 +20,6 @@
   <ItemGroup>
     <None Include="ShaderFile\shader.frag" />
     <None Include="ShaderFile\shader.vert" />
+    <None Include="ShaderFile\cube_shader.vert" />
   </ItemGroup>
 </Project>

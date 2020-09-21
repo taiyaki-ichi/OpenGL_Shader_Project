@@ -20,7 +20,7 @@ namespace graphic
 		vertex_array(VertexContainer&& v, IndexContaier&& i);
 		~vertex_array();
 
-		void bind_and_draw(GLenum mode);
+		void draw(GLenum mode);
 
 		//Ç∆ÇËÇ†Ç¶Ç∏floatÇÃílÇæÇØê›íËÇ≈Ç´ÇÈÇÊÇ§Ç…ÇµÇΩ
 		void set_attribute_location(GLint location, GLint size, GLboolean normalized, GLsizei strideNum, unsigned int startNum);
@@ -48,27 +48,10 @@ namespace graphic
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_index_ID);
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(i), &i[0], GL_STATIC_DRAW);
 
-
-		//glVertexAttribPointer(attribLocation, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-		//glEnableVertexAttribArray(attribLocation);
-
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 		glBindVertexArray(0);
 
-		///
-
-		/*
-		glBindVertexArray(m_VAO_ID);
-		glBindBuffer(GL_ARRAY_BUFFER, m_vertex_ID);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_index_ID);
-
-		glVertexAttribPointer(attribLocation, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-		glEnableVertexAttribArray(attribLocation);
-
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-		glBindVertexArray(0);
-		*/
 	
 	}
 
@@ -79,7 +62,7 @@ namespace graphic
 		glDeleteBuffers(1, &m_vertex_ID);
 	}
 
-	void vertex_array::bind_and_draw(GLenum mode)
+	void vertex_array::draw(GLenum mode)
 	{
 		glBindVertexArray(m_VAO_ID);
 		glDrawElements(mode, m_index_num, GL_UNSIGNED_INT, 0);
