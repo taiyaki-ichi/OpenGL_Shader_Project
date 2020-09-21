@@ -1,7 +1,7 @@
 #pragma once
 #include<glew.h>
 
-namespace graphics
+namespace graphic
 {
 
 	//頂点情報とそのインデックスを管理

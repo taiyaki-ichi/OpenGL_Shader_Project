@@ -14,6 +14,7 @@
 #include<array>
 
 #include"vertex_array.hpp"
+#include"shader.hpp"
 
 int main()
 {
@@ -37,16 +38,19 @@ int main()
 		return 0;
 	}
 
-
-	auto vertS = shader::compile("ShaderFile/shader.vert", GL_VERTEX_SHADER);
-	auto fragS = shader::compile("ShaderFile/shader.frag", GL_FRAGMENT_SHADER);
+	/*
+	auto vertS = graphic::compile("ShaderFile/shader.vert", GL_VERTEX_SHADER);
+	auto fragS = graphic::compile("ShaderFile/shader.frag", GL_FRAGMENT_SHADER);
 
 	if (!vertS || !fragS) {
 		std::cout << "failed com";
 		return 0;
 	}
 
-	auto sha = shader::create_shaderprogram(vertS.value(), fragS.value());
+	auto sha = graphic::create_shaderprogram(vertS.value(), fragS.value());
+	*/
+
+	auto s = graphic::shader{ "ShaderFile/shader.vert" ,"ShaderFile/shader.frag" };
 
 	std::array vert{
 		glm::vec3{0.f,0.5f,0.f},
@@ -57,9 +61,9 @@ int main()
 	std::array<unsigned int,3> index{
 		0,1,2
 	};
-	auto posLocation = glGetAttribLocation(sha.value(), "pos");
+	auto posLocation = s.get_attribute_location("pos");
 
-	auto vao = graphics::vertex_array{ std::move(vert),std::move(index),posLocation };
+	auto vao = graphic::vertex_array{ std::move(vert),std::move(index),posLocation };
 
 
 	while (windows::process_message()) {
@@ -68,7 +72,8 @@ int main()
 		wglMakeCurrent(pair.value().first, pair.value().second);
 
 		
-		glUseProgram(sha.value());
+		//glUseProgram(sha.value());
+		s.use();
 
 		glClear(GL_COLOR_BUFFER_BIT);
 

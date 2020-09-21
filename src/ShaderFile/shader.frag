@@ -1,10 +1,8 @@
 #version 120
 
-//
-// shader.frag
-//
+out vec4 FragColor;
 
 void main(void)
 {
-    gl_FragColor = gl_Color+vec4(0.0,0.0,0.6,0.0);;
+    gl_FragColor = gl_Color;
 }
