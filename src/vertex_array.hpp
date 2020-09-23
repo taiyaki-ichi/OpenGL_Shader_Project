@@ -66,6 +66,7 @@ namespace graphic
 	{
 		glBindVertexArray(m_VAO_ID);
 		glDrawElements(mode, m_index_num, GL_UNSIGNED_INT, 0);
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
 	inline void vertex_array::set_attribute_location(GLint location, GLint size, GLboolean normalized, GLsizei strideNum, unsigned int startNum)

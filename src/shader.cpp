@@ -30,6 +30,9 @@ namespace graphic
 		//コンパイルに成功したとき、シェーダプログラムを生成
 		if (vertID && fragID)
 		{
+			//std::cout << vertShaderFileName << " : " << vertID.value() << "\n";
+			//std::cout << fragShaderFileName << " : " << fragID.value() << "\n";
+
 			auto id = create_shaderprogram(vertID.value(), fragID.value());
 			if (id) 
 				m_ID = id.value();

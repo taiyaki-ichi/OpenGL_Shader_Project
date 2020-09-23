@@ -42,6 +42,7 @@ namespace graphic
 
 	void rainbow_cube::set_MVP(const GLfloat* mat4)
 	{
+		m_shader->use();
 		auto mvpLoc = m_shader->get_uniform_location("MVP");
 		glUniformMatrix4fv(mvpLoc, 1, GL_FALSE, mat4);
 	}

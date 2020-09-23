@@ -9,6 +9,7 @@
     <ClInclude Include="app\handle.hpp" />
     <ClInclude Include="app\time_keeper.hpp" />
     <ClInclude Include="rainbow_cube.hpp" />
+    <ClInclude Include="light_cube.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utility\file.cpp" />
@@ -18,12 +19,12 @@
     <ClCompile Include="app\func.cpp" />
     <ClCompile Include="app\time_keeper.cpp" />
     <ClCompile Include="rainbow_cube.cpp" />
+    <ClCompile Include="light_cube.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ShaderFile\shader.frag" />
-    <None Include="ShaderFile\shader.vert" />
-    <None Include="ShaderFile\cube_shader.vert" />
     <None Include="ShaderFile\rainbow_cube\shader.frag" />
     <None Include="ShaderFile\rainbow_cube\shader.vert" />
+    <None Include="ShaderFile\light_cube\shader.vert" />
+    <None Include="ShaderFile\light_cube\shader.frag" />
   </ItemGroup>
 </Project>
