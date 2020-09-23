@@ -149,6 +149,7 @@
     <ClInclude Include="app\func.hpp" />
     <ClInclude Include="app\handle.hpp" />
     <ClInclude Include="app\time_keeper.hpp" />
+    <ClInclude Include="rainbow_cube.hpp" />
     <ClInclude Include="shader.hpp" />
     <ClInclude Include="Utility\file.hpp" />
     <ClInclude Include="vertex_array.hpp" />
@@ -158,11 +159,14 @@
     <ClCompile Include="app\func.cpp" />
     <ClCompile Include="app\time_keeper.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="rainbow_cube.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="Utility\file.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ShaderFile\cube_shader.vert" />
+    <None Include="ShaderFile\rainbow_cube\shader.frag" />
+    <None Include="ShaderFile\rainbow_cube\shader.vert" />
     <None Include="ShaderFile\shader.frag" />
     <None Include="ShaderFile\shader.vert" />
   </ItemGroup>

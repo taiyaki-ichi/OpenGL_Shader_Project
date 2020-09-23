@@ -55,20 +55,20 @@ namespace graphic
 	
 	}
 
-	vertex_array::~vertex_array()
+	inline vertex_array::~vertex_array()
 	{
 		glDeleteBuffers(1, &m_vertex_ID);
 		glDeleteBuffers(1, &m_index_ID);
 		glDeleteBuffers(1, &m_vertex_ID);
 	}
 
-	void vertex_array::draw(GLenum mode)
+	inline void vertex_array::draw(GLenum mode)
 	{
 		glBindVertexArray(m_VAO_ID);
 		glDrawElements(mode, m_index_num, GL_UNSIGNED_INT, 0);
 	}
 
-	void vertex_array::set_attribute_location(GLint location, GLint size, GLboolean normalized, GLsizei strideNum, unsigned int startNum)
+	inline void vertex_array::set_attribute_location(GLint location, GLint size, GLboolean normalized, GLsizei strideNum, unsigned int startNum)
 	{
 		glBindVertexArray(m_VAO_ID);
 		glBindBuffer(GL_ARRAY_BUFFER, m_vertex_ID);
