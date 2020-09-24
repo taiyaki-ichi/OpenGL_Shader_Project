@@ -31,7 +31,7 @@ namespace graphic
 			7,6,2,7,2,3,
 			0,4,7,0,7,3
 		};
-		m_vertex_array = std::make_unique<vertex_array>(std::move(vert),std::move(index));
+		m_vertex_array = std::make_unique<vertex_array_with_index>(std::move(vert),std::move(index));
 
 		auto posLocation = m_shader->get_attribute_location("pos");
 		m_vertex_array->set_attribute_location(posLocation, 3, GL_FALSE, 6, 0);
