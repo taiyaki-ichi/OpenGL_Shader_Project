@@ -23,16 +23,17 @@ int main()
 	auto app = graphic::app::create("aa", windowWidth, windowHeight, 60.f);
 
 	auto light = graphic::light_cube{};
-	glm::mat4 lightPos{ 1.f };
-	lightPos = glm::translate(lightPos, glm::vec3{ 1.2f,1.f,2.f });
-	lightPos = glm::scale(lightPos, glm::vec3(0.2f));
+	auto lightPos = glm::vec3{ 1.2f,1.f,2.f };
+	glm::mat4 lightModel{ 1.f };
+	lightModel = glm::translate(lightModel, lightPos);
+	lightModel = glm::scale(lightModel, glm::vec3(0.2f));
 
 	auto cube = graphic::cube{};
 	cube.set_cube_color(1.f, 0.5f, 0.31f);
 	cube.set_light_color(1.f, 1.f, 1.f);
-	glm::mat4 cubePos{ 1.f };
+	glm::mat4 cubeModel{ 1.f };
 	//cubePos = glm::translate(cubePos, glm::vec3{ 0.f,0.f,0.f });
-	cubePos = glm::scale(cubePos, glm::vec3(0.5f));
+	cubeModel = glm::scale(cubeModel, glm::vec3(1.f));
 
 	constexpr float deltaRot = 0.01f;
 
@@ -49,7 +50,7 @@ int main()
 		glm::vec3(0.0, 1.0, 0.0)  // ã•ûŒü‚ðŽ¦‚·B(0,1.0,0)‚ÉÝ’è‚·‚é‚ÆyŽ²‚ªã‚É‚È‚è‚Ü‚·
 	);
 
-	
+	auto pv = projectionMat * viewMat;
 
 	while (app->loop()) {
 		app->begin_drawing();
@@ -58,13 +59,14 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		//lightPos= glm::rotate(lightPos, deltaRot, glm::vec3(0.2, 0.1, 0.05));
-		auto lightPosMVP = projectionMat * viewMat * lightPos;
+		auto lightPosMVP = projectionMat * viewMat * lightModel;
 		light.set_MVP(&lightPosMVP[0][0]);
 		light.draw();
 		
-		cubePos = glm::rotate(cubePos, deltaRot, glm::vec3(0.2, 0.1, 0.05));
-		auto cubePosMVP = projectionMat * viewMat * cubePos;
-		cube.set_MVP(&cubePos[0][0]);
+		cubeModel = glm::rotate(cubeModel, deltaRot, glm::vec3(0.2, 0.1, 0.05));
+		cube.set_PV(&pv[0][0]);
+		cube.set_model(&cubeModel[0][0]);
+		cube.set_light_pos(lightPos);
 		cube.draw();
 	
 		app->finish_drawing();

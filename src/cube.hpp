@@ -1,6 +1,7 @@
 #pragma once
 #include<memory>
 #include<glew.h>
+#include<glm.hpp>
 
 namespace graphic
 {
@@ -19,7 +20,10 @@ namespace graphic
 		void set_cube_color(float r, float g, float b);
 		void set_light_color(float r, float g, float b);
 
-		void set_MVP(const GLfloat* mat4);
+		void set_PV(const GLfloat* mat4);
+		void set_model(const GLfloat* mat4);
+
+		void set_light_pos(const glm::vec3& pos);
 
 		void draw();
 	};

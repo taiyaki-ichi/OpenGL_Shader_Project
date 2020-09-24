@@ -1,11 +1,17 @@
 #version 330 core
 
-in vec3 pos;
-in vec3 normal;
+in vec3 aPos;
+in vec3 aNormal;
 
-uniform mat4 MVP;
+out vec3 normal;
+out vec3 fragPos;
+
+uniform mat4 model;
+uniform mat4 PV;
 
 void main()
 {
-	gl_Position=MVP*vec4(pos,1.f);
+	gl_Position=PV*model*vec4(aPos,1.0);
+	fragPos=vec3(model*vec4(aPos,1.0));
+	normal=aNormal;
 }

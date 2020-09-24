@@ -59,11 +59,11 @@ namespace graphic
         m_vertex_array = std::make_unique<vertex_array>(std::move(v));
 
         //posの設定
-        auto posLocation = m_shader->get_attribute_location("pos");
+        auto posLocation = m_shader->get_attribute_location("aPos");
         m_vertex_array->set_attribute_location(posLocation, 3, GL_FALSE, 6, 0);
 
         //法線ベクトル
-        auto normalLocation = m_shader->get_attribute_location("normal");
+        auto normalLocation = m_shader->get_attribute_location("aNormal");
         m_vertex_array->set_attribute_location(normalLocation, 3, GL_FALSE, 6, 3);
 	}
 
@@ -81,11 +81,25 @@ namespace graphic
         glUniform3f(colorLocation, r, g, b);
     }
 
-    void cube::set_MVP(const GLfloat* mat4)
+    void cube::set_PV(const GLfloat* mat4)
     {
         m_shader->use();
-        auto mvpLoc = m_shader->get_uniform_location("MVP");
+        auto mvpLoc = m_shader->get_uniform_location("PV");
         glUniformMatrix4fv(mvpLoc, 1, GL_FALSE, mat4);
+    }
+
+    void cube::set_model(const GLfloat* mat4)
+    {
+        m_shader->use();
+        auto mvpLoc = m_shader->get_uniform_location("model");
+        glUniformMatrix4fv(mvpLoc, 1, GL_FALSE, mat4);
+    }
+
+    void cube::set_light_pos(const glm::vec3& pos)
+    {
+        m_shader->use();
+        auto mvpLoc = m_shader->get_uniform_location("lightPos");
+        glUniform3f(mvpLoc, pos.x, pos.y, pos.z);
     }
 
     void cube::draw()
