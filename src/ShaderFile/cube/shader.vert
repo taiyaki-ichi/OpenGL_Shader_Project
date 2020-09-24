@@ -13,5 +13,7 @@ void main()
 {
 	gl_Position=PV*model*vec4(aPos,1.0);
 	fragPos=vec3(model*vec4(aPos,1.0));
-	normal=aNormal;
+
+	//èŠÔ‚Ì‚©‚©‚éì‹Æ‚È‚Ì‚Åuniform‚Åó‚¯‚Á‚Æ‚Á‚½•û‚ª‚¢‚¢
+	normal=mat3(transpose(inverse(model)))*aNormal;
 }

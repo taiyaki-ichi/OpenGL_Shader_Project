@@ -24,6 +24,7 @@ namespace graphic
 		void set_model(const GLfloat* mat4);
 
 		void set_light_pos(const glm::vec3& pos);
+		void set_view_pos(const glm::vec3& pos);
 
 		void draw();
 	};

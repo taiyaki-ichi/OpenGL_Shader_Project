@@ -102,6 +102,13 @@ namespace graphic
         glUniform3f(mvpLoc, pos.x, pos.y, pos.z);
     }
 
+    void cube::set_view_pos(const glm::vec3& pos)
+    {
+        m_shader->use();
+        auto mvpLoc = m_shader->get_uniform_location("viewPos");
+        glUniform3f(mvpLoc, pos.x, pos.y, pos.z);
+    }
+
     void cube::draw()
     {
         m_shader->use();
