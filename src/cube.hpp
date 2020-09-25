@@ -2,6 +2,7 @@
 #include<memory>
 #include<glew.h>
 #include<glm.hpp>
+#include<string>
 
 namespace graphic
 {
@@ -17,14 +18,10 @@ namespace graphic
 	public:
 		cube();
 
-		void set_cube_color(float r, float g, float b);
-		void set_light_color(float r, float g, float b);
-
-		void set_PV(const GLfloat* mat4);
-		void set_model(const GLfloat* mat4);
-
-		void set_light_pos(const glm::vec3& pos);
-		void set_view_pos(const glm::vec3& pos);
+		void set_vec3f(const std::string&, float, float, float);
+		void set_vec3f(const std::string&, const glm::vec3&);
+		void set_float(const std::string&, float);
+		void set_mat4f(const std::string&, const GLfloat* mat4);
 
 		void draw();
 	};

@@ -67,46 +67,32 @@ namespace graphic
         m_vertex_array->set_attribute_location(normalLocation, 3, GL_FALSE, 6, 3);
 	}
 
-    void cube::set_cube_color(float r, float g, float b)
+    void cube::set_vec3f(const std::string& name, float f1, float f2, float f3)
     {
         m_shader->use();
-        auto colorLocation = m_shader->get_uniform_location("cubeColor");
-        glUniform3f(colorLocation, r, g, b);
+        auto location = m_shader->get_uniform_location(name);
+        glUniform3f(location, f1, f2, f3);
     }
 
-    void cube::set_light_color(float r, float g, float b)
+    void cube::set_vec3f(const std::string& name, const glm::vec3& vec)
     {
         m_shader->use();
-        auto colorLocation = m_shader->get_uniform_location("lightColor");
-        glUniform3f(colorLocation, r, g, b);
+        auto mvpLoc = m_shader->get_uniform_location(name);
+        glUniform3f(mvpLoc, vec.x, vec.y, vec.z);
     }
 
-    void cube::set_PV(const GLfloat* mat4)
+    void cube::set_float(const std::string& name, float f)
     {
         m_shader->use();
-        auto mvpLoc = m_shader->get_uniform_location("PV");
-        glUniformMatrix4fv(mvpLoc, 1, GL_FALSE, mat4);
+        auto location = m_shader->get_uniform_location(name);
+        glUniform1f(location, f);
     }
 
-    void cube::set_model(const GLfloat* mat4)
+    void cube::set_mat4f(const std::string& name, const GLfloat* mat4)
     {
         m_shader->use();
-        auto mvpLoc = m_shader->get_uniform_location("model");
-        glUniformMatrix4fv(mvpLoc, 1, GL_FALSE, mat4);
-    }
-
-    void cube::set_light_pos(const glm::vec3& pos)
-    {
-        m_shader->use();
-        auto mvpLoc = m_shader->get_uniform_location("lightPos");
-        glUniform3f(mvpLoc, pos.x, pos.y, pos.z);
-    }
-
-    void cube::set_view_pos(const glm::vec3& pos)
-    {
-        m_shader->use();
-        auto mvpLoc = m_shader->get_uniform_location("viewPos");
-        glUniform3f(mvpLoc, pos.x, pos.y, pos.z);
+        auto location = m_shader->get_uniform_location(name);
+        glUniformMatrix4fv(location, 1, GL_FALSE, mat4);
     }
 
     void cube::draw()

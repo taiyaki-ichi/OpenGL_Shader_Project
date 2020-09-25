@@ -46,8 +46,14 @@ int main()
 		cube.emplace_back(graphic::cube{});
 
 	for (auto& c:cube) {
-		c.set_cube_color(1.f, 0.5f, 0.31f);
-		c.set_light_color(1.f, 1.f, 1.f);
+		c.set_vec3f("material.ambient", 1.f, 0.5f, 0.31f);
+		c.set_vec3f("material.diffuse", 1.f, 0.5f, 0.31f);
+		c.set_vec3f("material.specular", 0.5f, 0.5f, 0.5f);
+		c.set_float("material.shininess", 64.f);
+
+		c.set_vec3f("light.ambient", 0.2f, 0.2f, 0.2f);
+		c.set_vec3f("light.diffuse", 0.5f, 0.5f, 0.5f);
+		c.set_vec3f("light.specular", 1.f, 1.f, 1.f);
 	}
 
 	auto projectionMat = glm::perspective(
@@ -89,10 +95,10 @@ int main()
 		for (int i = 0; i < cubeModel.size(); i++)
 		{
 			cubeModel[i] = glm::rotate(cubeModel[i], deltaRot, glm::vec3(0.2, 0.1, 0.05));
-			cube[i].set_PV(&pv[0][0]);
-			cube[i].set_model(&cubeModel[i][0][0]);
-			cube[i].set_light_pos(lightPos);
-			cube[i].set_view_pos(viewPos);
+			cube[i].set_mat4f("PV", &pv[0][0]);
+			cube[i].set_mat4f("model", &cubeModel[i][0][0]);
+			cube[i].set_vec3f("lightPos", lightPos);
+			cube[i].set_vec3f("viewPos", viewPos);
 			cube[i].draw();
 		}
 	
