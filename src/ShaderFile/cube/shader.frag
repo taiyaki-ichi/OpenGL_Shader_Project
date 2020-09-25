@@ -23,6 +23,10 @@ struct Light{
     vec3 ambient;
     vec3 diffuse;
     vec3 specular;
+
+    float constant;
+    float liner;
+    float quadratic;
 };
 uniform Light light;
 
@@ -45,8 +49,13 @@ void main()
 
     vec3 ambient =light.ambient*material.ambient;
 
-    vec3 result=ambient+diffuse+specular;
-    color = vec4(result, 1.0);
-   
+    //Œ¸Š‚ÌÀ‘•
+    float distance=length(light.position-fragPos);
+    float atteniation=1.0/(light.constant+light.liner*distance+light.quadratic*(distance*distance));
 
+    vec3 result=(ambient+diffuse+specular)*atteniation;
+    color = vec4(result, 1.0);
+  
 }
+
+

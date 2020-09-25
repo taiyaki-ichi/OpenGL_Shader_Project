@@ -31,14 +31,15 @@ int main()
 		glm::translate(glm::mat4{1.f},glm::vec3{ -2.f,0.f,0.f }),
 		glm::translate(glm::mat4{1.f},glm::vec3{ 0.f,0.f,-2.f }),
 		glm::translate(glm::mat4{1.f},glm::vec3{ 0.f,0.f,2.f }),
-		glm::translate(glm::mat4{1.f},glm::vec3{ 2.f,2.f,-2.f }),
-		glm::translate(glm::mat4{1.f},glm::vec3{ -2.f,2.f,-2.f }),
-		glm::translate(glm::mat4{1.f},glm::vec3{ 2.f,-2.f,-2.f }),
-		glm::translate(glm::mat4{1.f},glm::vec3{ -2.f,-2.f,-2.f }),
-		glm::translate(glm::mat4{1.f},glm::vec3{ 2.f,2.f,2.f }),
-		glm::translate(glm::mat4{1.f},glm::vec3{ -2.f,2.f,2.f }),
-		glm::translate(glm::mat4{1.f},glm::vec3{ 2.f,-2.f,2.f }),
-		glm::translate(glm::mat4{1.f},glm::vec3{ -2.f,-2.f,2.f }),
+
+		glm::translate(glm::mat4{1.f},glm::vec3{ 4.f,4.f,-4.f }),
+		glm::translate(glm::mat4{1.f},glm::vec3{ -4.f,4.f,-4.f }),
+		glm::translate(glm::mat4{1.f},glm::vec3{ 4.f,-4.f,-4.f }),
+		glm::translate(glm::mat4{1.f},glm::vec3{ -4.f,-4.f,-4.f }),
+		glm::translate(glm::mat4{1.f},glm::vec3{ 4.f,4.f,4.f }),
+		glm::translate(glm::mat4{1.f},glm::vec3{ -4.f,4.f,4.f }),
+		glm::translate(glm::mat4{1.f},glm::vec3{ 4.f,-4.f,4.f }),
+		glm::translate(glm::mat4{1.f},glm::vec3{ -4.f,-4.f,4.f }),
 	};
 
 	std::vector<graphic::cube> cube{};
@@ -54,6 +55,10 @@ int main()
 		c.set_vec3f("light.ambient", 0.2f, 0.2f, 0.2f);
 		c.set_vec3f("light.diffuse", 0.5f, 0.5f, 0.5f);
 		c.set_vec3f("light.specular", 1.f, 1.f, 1.f);
+
+		c.set_float("light.constant", 1.f);
+		c.set_float("light.liner", 0.09f);
+		c.set_float("light.quadratic", 0.032f);
 	}
 
 	auto projectionMat = glm::perspective(
@@ -80,7 +85,7 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		rot += deltaRot;
-		auto viewPos = glm::vec3(10.0 * std::sin(rot), 0.0, 10.0 * std::cos(rot));
+		auto viewPos = glm::vec3(20.0 * std::sin(rot), 0.0, 20.0 * std::cos(rot));
 		auto viewMat = glm::lookAt(
 			viewPos,
 			glm::vec3(0.0, 0.0, 0.0),
