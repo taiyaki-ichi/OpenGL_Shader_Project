@@ -3,6 +3,7 @@
 #include<glew.h>
 #include<glm.hpp>
 #include<string>
+#include<vector>
 
 namespace graphic
 {
@@ -25,4 +26,5 @@ namespace graphic
 
 		void draw();
 	};
+
 }

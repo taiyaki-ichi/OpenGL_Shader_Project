@@ -6,7 +6,7 @@
 
 namespace graphic
 {
-
+	//シンプルなシェーダクラス
 	class shader
 	{
 		GLint m_ID;

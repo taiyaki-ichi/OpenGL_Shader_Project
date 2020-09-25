@@ -3,7 +3,7 @@
 
 namespace graphic
 {
-
+	//’¸“_î•ñ‚Ì‚İ
 	class vertex_array
 	{
 		GLuint m_VAO_ID;
