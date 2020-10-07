@@ -1,9 +1,9 @@
 # OpenGL_Shader_Project
 
-OpenGLでシェーダとふれあう
+OpenGLでシェーダとふれあいたい
 
 
-↓結果
+# 結果
 
 <img src="001.gif" width="500">
 
