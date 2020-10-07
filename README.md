@@ -2,7 +2,6 @@
 
 OpenGLでシェーダとふれあう
 
-![](001.gif)
-<img src="001.gif" width="400">
+<img src="001.gif" width="500">
 
-![](002.gif)
+<img src="002.gif" width="500">
